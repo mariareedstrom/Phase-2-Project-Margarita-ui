@@ -1,20 +1,6 @@
-import React, { useState } from "react";
+import React from "react";
 
-function Form({ handleSubmit }) {
-  const [formData, setFormData] = useState({
-    name: "",
-    ingredients: "",
-    directions: "",
-    image: "",
-    like: false,
-  });
-
-  function handleChange(e) {
-    // console.log(e.target.value);
-    setFormData({ ...formData, [e.target.name]: e.target.value });
-    // console.log(formData);
-  }
-
+function Form({ formData, handleChange, handleSubmit }) {
   return (
     <form
       style={{
@@ -23,7 +9,7 @@ function Form({ handleSubmit }) {
         width: "400px",
         margin: "auto",
       }}
-      onSubmit={(e) => handleSubmit(e, formData)}
+      onSubmit={handleSubmit}
     >
       <label>Name</label>
       <input
@@ -44,13 +30,13 @@ function Form({ handleSubmit }) {
       ></input>
 
       <label>Directions</label>
-      <input
+      <textarea
         type="text"
         name="directions"
         aria-label="directions"
         value={formData.directions}
         onChange={handleChange}
-      ></input>
+      ></textarea>
 
       <label>Image URL </label>
       <input
