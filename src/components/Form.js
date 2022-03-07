@@ -1,6 +1,34 @@
-import React from "react";
+import { Ingredients } from "./Ingredients";
+import React, { useState } from "react";
 
-function Form({ formData, handleChange, handleSubmit }) {
+function Form({ onSubmit }) {
+  const [formData, setFormData] = useState({
+    name: "",
+    ingredients: [],
+    directions: "",
+    image: "",
+    like: false,
+  });
+
+  function handleFormChange(e) {
+    // console.log(e.target.value);
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+    console.log(formData);
+  }
+
+  function handleSubmit(e) {
+    e.preventDefault();
+    onSubmit(formData).then(() => {
+      setFormData({
+        name: "",
+        ingredients: [],
+        directions: "",
+        image: "",
+        like: false,
+      });
+    });
+  }
+
   return (
     <form
       style={{
@@ -17,17 +45,10 @@ function Form({ formData, handleChange, handleSubmit }) {
         name="name"
         aria-label="name"
         value={formData.name}
-        onChange={handleChange}
+        onChange={handleFormChange}
       ></input>
 
-      <label>Ingredients</label>
-      <input
-        type="text"
-        name="ingredients"
-        aria-label="ingredients"
-        value={formData.ingredients}
-        onChange={handleChange}
-      ></input>
+      <Ingredients ingredients={formData.ingredients} />
 
       <label>Directions</label>
       <textarea
@@ -35,7 +56,7 @@ function Form({ formData, handleChange, handleSubmit }) {
         name="directions"
         aria-label="directions"
         value={formData.directions}
-        onChange={handleChange}
+        onChange={handleFormChange}
       ></textarea>
 
       <label>Image URL </label>
@@ -44,7 +65,7 @@ function Form({ formData, handleChange, handleSubmit }) {
         name="image"
         aria-label="image"
         value={formData.image}
-        onChange={handleChange}
+        onChange={handleFormChange}
       ></input>
 
       <input type="submit" />
