@@ -3,13 +3,12 @@ import { Switch, Route, useHistory } from "react-router-dom";
 import MargaritaList from "./MargaritaList";
 import Form from "./Form";
 import Search from "./Search";
-import Favorites from "./Favorites";
+
 import MargaritaDetails from "./MargaritaDetails";
 
 function MargaritaPage() {
   const [margaritas, setMargaritas] = useState([]);
 
-  const [favorites, setFavorites] = useState([]);
   const [search, setSearch] = useState("");
 
   const history = useHistory();
@@ -37,25 +36,48 @@ function MargaritaPage() {
   }
 
   function addToFavorites(margarita) {
-    setFavorites([...favorites, margarita]);
-    history.push("/margaritas/favorites");
+    // console.log(margarita);
+    fetch(`http://localhost:3001/margaritas/${margarita.id}`, {
+      method: "PATCH",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({ ...margarita, favorite: true }),
+    })
+      .then((resp) => resp.json())
+      .then(console.log);
   }
 
-  const filteredMargaritas = margaritas.filter((margarita) => {
-    return margarita.name.toLowerCase().includes(search.toLowerCase());
-  });
+  function removeFromFavorites(margarita) {
+    console.log(margarita);
+  }
+
+  const filteredMargaritas = margaritas
+    .filter(({ favorite }) => {
+      if (true) {
+        return favorite === true;
+      }
+    })
+    .filter((margarita) => {
+      return margarita.name.toLowerCase().includes(search.toLowerCase());
+    });
 
   return (
     <div>
+      <label>
+        <input type="checkbox" />
+        View Favorites🍸
+      </label>
+
       <Switch>
-        <Route path="/margaritas/favorites">
-          <Favorites favorites={favorites} />
-        </Route>
         <Route path="/margaritas/new">
           <Form onSubmit={onSubmit} />
         </Route>
         <Route path="/margaritas/:id">
-          <MargaritaDetails addToFavorites={addToFavorites} />
+          <MargaritaDetails
+            onAddToFavorites={addToFavorites}
+            onRemoveFromFavorites={removeFromFavorites}
+          />
         </Route>
         <Route path="/margaritas">
           <Search search={search} setSearch={setSearch} />

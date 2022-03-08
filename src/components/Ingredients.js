@@ -24,11 +24,13 @@ function Ingredients({ ingredients, onIngredientsUpdated }) {
   }
 
   function handleChangeIngredient(e) {
+    // updates values
     const ingredientValues = serializeIngredients();
     onIngredientsUpdated(ingredientValues);
   }
 
   function handleAddIngredient(e) {
+    // adds values
     const ingredientValues = serializeIngredients();
     onIngredientsUpdated([...ingredientValues, ""]);
   }
