@@ -7,7 +7,7 @@ function Form({ onSubmit }) {
     ingredients: [],
     directions: "",
     image: "",
-    like: false,
+    favorite: false,
   });
 
   function handleFormChange(e) {
@@ -24,9 +24,13 @@ function Form({ onSubmit }) {
         ingredients: [],
         directions: "",
         image: "",
-        like: false,
+        favorite: false,
       });
     });
+  }
+
+  function onIngredientsUpdated(ingredients) {
+    setFormData({ ...formData, ingredients });
   }
 
   return (
@@ -48,7 +52,10 @@ function Form({ onSubmit }) {
         onChange={handleFormChange}
       ></input>
 
-      <Ingredients ingredients={formData.ingredients} />
+      <Ingredients
+        ingredients={formData.ingredients}
+        onIngredientsUpdated={onIngredientsUpdated}
+      />
 
       <label>Directions</label>
       <textarea

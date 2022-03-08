@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useRef } from "react";
 export function Ingredients({
   ingredients,
-  onAddIngredient,
+  onIngredientsUpdated,
   handleFormChange,
 }) {
   const ingredientList = ingredients.map((ingredient, index) => {
@@ -18,21 +18,32 @@ export function Ingredients({
     );
   });
 
+  const ingredientListRef = useRef(null);
+
+  function handleAddIngredient(e) {
+    const ingredientValues = Array.from(
+      ingredientListRef.current.querySelectorAll("[name]")
+    ).map(({ value }) => value);
+
+    onIngredientsUpdated(ingredientValues);
+  }
+
+  //   console.log(ingredients);
+
   return (
     <div>
       <label>Ingredients</label>
-      <ul>
+      <ul ref={ingredientListRef}>
         {ingredientList}
         <li>
           <input
             type="text"
             name={`ingredients[${ingredients.length}]`}
             aria-label="ingredients"
-            onChange={handleFormChange}
           ></input>
         </li>
       </ul>
-      <button onClick={onAddIngredient}>Add Ingredient</button>
+      <button onClick={handleAddIngredient}>Add Ingredient</button>
     </div>
   );
 }
