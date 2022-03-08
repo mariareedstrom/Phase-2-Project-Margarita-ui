@@ -1,10 +1,10 @@
-import { Ingredients } from "./Ingredients";
+import Ingredients from "./Ingredients";
 import React, { useState } from "react";
 
 function Form({ onSubmit }) {
   const [formData, setFormData] = useState({
     name: "",
-    ingredients: [],
+    ingredients: [""],
     directions: "",
     image: "",
     favorite: false,
@@ -13,15 +13,18 @@ function Form({ onSubmit }) {
   function handleFormChange(e) {
     // console.log(e.target.value);
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    console.log(formData);
+    // console.log(formData);
   }
 
   function handleSubmit(e) {
     e.preventDefault();
-    onSubmit(formData).then(() => {
+    const ingredients = formData.ingredients.filter(
+      (ingredient) => ingredient !== ""
+    );
+    onSubmit({ ...formData, ingredients }).then(() => {
       setFormData({
         name: "",
-        ingredients: [],
+        ingredients: [""],
         directions: "",
         image: "",
         favorite: false,
@@ -31,7 +34,9 @@ function Form({ onSubmit }) {
 
   function onIngredientsUpdated(ingredients) {
     setFormData({ ...formData, ingredients });
+    // console.log(formData);
   }
+  // console.log(formData.ingredients);
 
   return (
     <form

@@ -1,31 +1,36 @@
 import React, { useRef } from "react";
-export function Ingredients({
-  ingredients,
-  onIngredientsUpdated,
-  handleFormChange,
-}) {
+
+function Ingredients({ ingredients, onIngredientsUpdated }) {
   const ingredientList = ingredients.map((ingredient, index) => {
     return (
-      <li>
+      <li key={`ingredients[${index}]`}>
         <input
           type="text"
           name={`ingredients[${index}]`}
-          key={index}
           aria-label="ingredients"
           value={ingredient}
+          required="true"
+          onChange={handleChangeIngredient}
         ></input>
       </li>
     );
   });
 
   const ingredientListRef = useRef(null);
+  function serializeIngredients() {
+    return Array.from(ingredientListRef.current.querySelectorAll("[name]")).map(
+      ({ value }) => value
+    );
+  }
+
+  function handleChangeIngredient(e) {
+    const ingredientValues = serializeIngredients();
+    onIngredientsUpdated(ingredientValues);
+  }
 
   function handleAddIngredient(e) {
-    const ingredientValues = Array.from(
-      ingredientListRef.current.querySelectorAll("[name]")
-    ).map(({ value }) => value);
-
-    onIngredientsUpdated(ingredientValues);
+    const ingredientValues = serializeIngredients();
+    onIngredientsUpdated([...ingredientValues, ""]);
   }
 
   //   console.log(ingredients);
@@ -33,17 +38,12 @@ export function Ingredients({
   return (
     <div>
       <label>Ingredients</label>
-      <ul ref={ingredientListRef}>
-        {ingredientList}
-        <li>
-          <input
-            type="text"
-            name={`ingredients[${ingredients.length}]`}
-            aria-label="ingredients"
-          ></input>
-        </li>
-      </ul>
-      <button onClick={handleAddIngredient}>Add Ingredient</button>
+      <ul ref={ingredientListRef}>{ingredientList}</ul>
+      <button type="button" onClick={handleAddIngredient}>
+        Add Ingredient
+      </button>
     </div>
   );
 }
+
+export default Ingredients;
