@@ -55,7 +55,7 @@ function Form({ onSubmit }) {
         aria-label="name"
         value={formData.name}
         onChange={handleFormChange}
-        required="true"
+        required={true}
       ></input>
 
       <Ingredients
@@ -70,7 +70,7 @@ function Form({ onSubmit }) {
         aria-label="directions"
         value={formData.directions}
         onChange={handleFormChange}
-        required="true"
+        required={true}
       ></textarea>
 
       <label>Image URL </label>
@@ -80,7 +80,7 @@ function Form({ onSubmit }) {
         aria-label="image"
         value={formData.image}
         onChange={handleFormChange}
-        required="true"
+        required={true}
       ></input>
 
       <input type="submit" />

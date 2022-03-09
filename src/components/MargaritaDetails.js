@@ -33,15 +33,18 @@ function MargaritaDetails({ onAddToFavorites, onRemoveFromFavorites }) {
   return (
     <div>
       <h3>{margarita.name}</h3>
-      <button onClick={handleAddToFavoritesClick}>❤️ Add To Favorites</button>
-      <button onClick={handleRemoveFromFavoritesClick}>
-        🗑️ Remove From Favorites
-      </button>
+      {margarita.favorite === false ? (
+        <button onClick={handleAddToFavoritesClick}>❤️ Add To Favorites</button>
+      ) : (
+        <button onClick={handleRemoveFromFavoritesClick}>
+          🗑️ Remove From Favorites
+        </button>
+      )}
 
       <img src={image} alt={margarita.name} />
       <ul>
         {margarita.ingredients.map((ingredient) => (
-          <li>{ingredient}</li>
+          <li key={ingredient}>{ingredient}</li>
         ))}
       </ul>
       <p>{margarita.directions}</p>
