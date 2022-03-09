@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useParams, Link } from "react-router-dom";
+import styled from "styled-components";
 
 function MargaritaDetails({ onAddToFavorites, onRemoveFromFavorites }) {
   const [margarita, setMargarita] = useState(null);
@@ -31,7 +32,7 @@ function MargaritaDetails({ onAddToFavorites, onRemoveFromFavorites }) {
   }
 
   return (
-    <div>
+    <DetailsPage>
       <h3>{margarita.name}</h3>
       {margarita.favorite === false ? (
         <button onClick={handleAddToFavoritesClick}>❤️ Add To Favorites</button>
@@ -49,8 +50,16 @@ function MargaritaDetails({ onAddToFavorites, onRemoveFromFavorites }) {
       </ul>
       <p>{margarita.directions}</p>
       <Link to="/margaritas">Home</Link>
-    </div>
+    </DetailsPage>
   );
 }
 
 export default MargaritaDetails;
+
+const DetailsPage = styled.div`
+  img {
+    width: 350px;
+    height: 350px;
+    border: solid;
+  }
+`;

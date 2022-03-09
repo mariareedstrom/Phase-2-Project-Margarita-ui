@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Switch, Route, useHistory } from "react-router-dom";
+import styled from "styled-components";
 import MargaritaList from "./MargaritaList";
 import Form from "./Form";
 import Search from "./Search";
@@ -89,14 +90,16 @@ function MargaritaPage() {
 
   return (
     <div>
-      <label>
-        <input
-          type="checkbox"
-          checked={checked}
-          onChange={handleCheckboxChange}
-        />
-        View Favorites🍸
-      </label>
+      <CheckboxContainer>
+        <label>
+          <input
+            type="checkbox"
+            checked={checked}
+            onChange={handleCheckboxChange}
+          />
+          View Favorites🍸
+        </label>
+      </CheckboxContainer>
 
       <Switch>
         <Route path="/margaritas/new">
@@ -121,3 +124,8 @@ function MargaritaPage() {
 }
 
 export default MargaritaPage;
+
+const CheckboxContainer = styled.div`
+  text-align: center;
+  font-family: ${(props) => props.theme.font.secondary};
+`;

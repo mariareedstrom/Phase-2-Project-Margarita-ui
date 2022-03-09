@@ -16,7 +16,8 @@ function MargaritaCard({ margarita }) {
 export default MargaritaCard;
 
 const Card = styled.div`
-  background-color: #d4e8c8;
+  background-color: ${(props) => props.theme.colors.primary};
+  font-family: ${(props) => props.theme.font.primary};
   text-align: center;
   width: 300px;
   height: 200px;
