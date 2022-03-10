@@ -23,7 +23,7 @@ const Card = styled.div`
   height: 200px;
   padding: 10px;
   margin: 20px;
-  box-shadow: 4px 4px 9px 0px rgb(0, 0, 0.2);
+  box-shadow: 4px 4px 8px 0px rgb(0, 0, 0.2);
   a {
     text-decoration: none;
     color: grey;

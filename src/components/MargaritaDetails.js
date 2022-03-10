@@ -62,4 +62,6 @@ const DetailsPage = styled.div`
     height: 350px;
     border: solid;
   }
+  ul {
+  }
 `;

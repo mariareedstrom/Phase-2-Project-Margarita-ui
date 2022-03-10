@@ -1,5 +1,6 @@
 import { Switch, Route } from "react-router-dom";
 import { styled, ThemeProvider } from "styled-components";
+import "./index.css";
 import Header from "./components/Header";
 import MargaritaPage from "./components/MargaritaPage";
 
