@@ -5,7 +5,7 @@ function Header() {
   return (
     <HeaderContainer>
       <h1>Margarita Mania</h1>
-      <h3>It's five o'clokc right here!</h3>
+      <h3>It's five o'clock right here!</h3>
     </HeaderContainer>
   );
 }
