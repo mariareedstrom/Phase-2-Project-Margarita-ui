@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route, useHistory, Link } from "react-router-dom";
 import styled from "styled-components";
 import MargaritaList from "./MargaritaList";
 import Form from "./Form";
@@ -79,14 +79,14 @@ function MargaritaPage() {
       return margarita.name.toLowerCase().includes(search.toLowerCase());
     });
 
-  function deleteMargarita(margarita) {
-    console.log(margarita);
-    fetch(`http://localhost:3001/margaritas/${margarita.id}`, {
-      method: "DELETE",
-    })
-      .then((resp) => resp.json())
-      .then(console.log);
-  }
+  // function deleteMargarita(margarita) {
+  //   console.log(margarita);
+  //   fetch(`http://localhost:3001/margaritas/${margarita.id}`, {
+  //     method: "DELETE",
+  //   })
+  //     .then((resp) => resp.json())
+  //     .then(console.log);
+  // }
 
   return (
     <div>
@@ -101,10 +101,15 @@ function MargaritaPage() {
         </label>
       </CheckboxContainer>
 
+      <FormLink>
+        <Link to="/margaritas/new">Add A New Margarita</Link>
+      </FormLink>
+
       <Switch>
         <Route path="/margaritas/new">
           <Form onSubmit={onSubmit} />
         </Route>
+
         <Route path="/margaritas/:id">
           <MargaritaDetails
             onAddToFavorites={addToFavorites}
@@ -115,6 +120,7 @@ function MargaritaPage() {
           <Search search={search} setSearch={setSearch} />
           <MargaritaList margaritas={filteredMargaritas} />
         </Route>
+
         <Route>
           <h1>404 Sorry, this page does not exist.</h1>
         </Route>
@@ -128,4 +134,21 @@ export default MargaritaPage;
 const CheckboxContainer = styled.div`
   text-align: center;
   font-family: ${(props) => props.theme.font.secondary};
+  display: flex;
+  justify-content: end;
+  margin-right: 50px;
+`;
+
+const FormLink = styled.div`
+  display: flex;
+  justify-content: start;
+  margin-left: 50px;
+  padding: 4px 8px;
+  border: 1px solid #e5eaed;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: 600;
+  color: #788697;
+  font-family: ${(props) => props.theme.font.primary};
+  margin-bottom: 20px;
 `;

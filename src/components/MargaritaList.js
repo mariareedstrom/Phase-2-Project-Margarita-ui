@@ -20,4 +20,7 @@ const DisplayCards = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: space-around;
+  margin-top: 10vh;
+  padding-top: 10px;
+  background-color: ${(props) => props.theme.colors.primary};
 `;

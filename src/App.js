@@ -1,5 +1,5 @@
-import { Switch, Route } from "react-router-dom";
-import { styled, ThemeProvider } from "styled-components";
+import { Route } from "react-router-dom";
+import { ThemeProvider } from "styled-components";
 import "./index.css";
 import Header from "./components/Header";
 import MargaritaPage from "./components/MargaritaPage";
@@ -21,10 +21,10 @@ export default App;
 
 const theme = {
   font: {
-    primary: "'Francois One', sans-serif",
-    secondary: "'Pathway Gothic One', sans-serif",
+    primary: "'Source Sans Pro', sans-serif",
+    secondary: "'Playfair Display', serif",
   },
   colors: {
-    primary: "#d4e8c8",
+    primary: "#eaeff1",
   },
 };

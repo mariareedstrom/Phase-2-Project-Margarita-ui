@@ -1,8 +1,9 @@
 import React from "react";
+import styled from "styled-components";
 
 function Search({ search, setSearch }) {
   return (
-    <div>
+    <SearchBox>
       <label htmlFor="search">Search Margaritas:</label>
       <input
         type="text"
@@ -10,8 +11,15 @@ function Search({ search, setSearch }) {
         value={search}
         onChange={(e) => setSearch(e.target.value)}
       />
-    </div>
+    </SearchBox>
   );
 }
 
 export default Search;
+
+const SearchBox = styled.div`
+  font-family: ${(props) => props.theme.font.secondary};
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+`;

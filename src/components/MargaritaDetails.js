@@ -57,11 +57,11 @@ function MargaritaDetails({ onAddToFavorites, onRemoveFromFavorites }) {
 export default MargaritaDetails;
 
 const DetailsPage = styled.div`
+  font-family: ${(props) => props.theme.font.primary};
+
   img {
     width: 350px;
     height: 350px;
     border: solid;
-  }
-  ul {
   }
 `;
