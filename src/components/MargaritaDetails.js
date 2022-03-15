@@ -32,7 +32,7 @@ function MargaritaDetails({ onAddToFavorites, onRemoveFromFavorites }) {
   }
 
   return (
-    <DetailsPage>
+    <div>
       <h3>{margarita.name}</h3>
       {margarita.favorite === false ? (
         <button onClick={handleAddToFavoritesClick}>❤️ Add To Favorites</button>
@@ -50,18 +50,8 @@ function MargaritaDetails({ onAddToFavorites, onRemoveFromFavorites }) {
       </ul>
       <p>{margarita.directions}</p>
       <Link to="/margaritas">Home</Link>
-    </DetailsPage>
+    </div>
   );
 }
 
 export default MargaritaDetails;
-
-const DetailsPage = styled.div`
-  font-family: ${(props) => props.theme.font.primary};
-
-  img {
-    width: 350px;
-    height: 350px;
-    border: solid;
-  }
-`;

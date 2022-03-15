@@ -1,26 +1,17 @@
 import React from "react";
 import styled from "styled-components";
+import { AppBar, Typography } from "@mui/material";
 
 function Header() {
   return (
-    <HeaderContainer>
-      <h1>Margarita Mania</h1>
+    <AppBar position="static">
+      <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+        Margarita Mania
+      </Typography>
+
       <h3>It's five o'clock right here!</h3>
-    </HeaderContainer>
+    </AppBar>
   );
 }
 
 export default Header;
-
-const HeaderContainer = styled.div`
-  background-color: ${(props) => props.theme.colors.primary};
-  margin: 20px;
-  padding: 10px;
-  text-align: center;
-  h1 {
-    font-family: ${(props) => props.theme.font.primary};
-  }
-  h3 {
-    font-family: ${(props) => props.theme.font.secondary};
-  }
-`;
