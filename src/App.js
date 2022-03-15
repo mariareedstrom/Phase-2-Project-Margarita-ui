@@ -1,5 +1,6 @@
 import { Route } from "react-router-dom";
 import { ThemeProvider } from "styled-components";
+import { createTheme } from "@mui/material";
 import "./index.css";
 import Header from "./components/Header";
 import MargaritaPage from "./components/MargaritaPage";
@@ -19,12 +20,13 @@ function App() {
 
 export default App;
 
-const theme = {
-  font: {
-    primary: "'Source Sans Pro', sans-serif",
-    secondary: "'Playfair Display', serif",
+const theme = createTheme({
+  palette: {
+    primary: {
+      main: "#3F8AE0",
+    },
+    secondary: {
+      main: "#326eb3",
+    },
   },
-  colors: {
-    primary: "#eaeff1",
-  },
-};
+});
