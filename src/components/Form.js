@@ -1,6 +1,11 @@
 import Ingredients from "./Ingredients";
 import React, { useState } from "react";
-import { useHistory, Link } from "react-router-dom";
+import { useHistory } from "react-router-dom";
+import { styled, Typography } from "@mui/material";
+import TextField from "@mui/material/TextField";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import Toolbar from "@mui/material/Toolbar";
 
 function Form({ onSubmit }) {
   const [formData, setFormData] = useState({
@@ -42,57 +47,88 @@ function Form({ onSubmit }) {
   }
   // console.log(formData.ingredients);
 
+  function handleCancelClick() {
+    history.push("/margaritas");
+  }
+
   return (
-    <div>
-      <form
-        style={{
-          display: "flex",
-          flexDirection: "column",
-          width: "400px",
-          margin: "auto",
-        }}
-        onSubmit={handleSubmit}
-      >
-        <label>Name</label>
-        <input
-          type="text"
-          name="name"
-          aria-label="name"
-          value={formData.name}
-          onChange={handleFormChange}
-          required={true}
-        ></input>
+    <StyledContainer
+      component="form"
+      onSubmit={handleSubmit}
+      maxWidth="sm"
+      noValidate
+      autoComplete="off"
+    >
+      <Typography gutterBottom variant="h5">
+        Create a New Margarita
+      </Typography>
 
-        <Ingredients
-          ingredients={formData.ingredients}
-          onIngredientsUpdated={onIngredientsUpdated}
-        />
+      <TextField
+        id="outlined-basic"
+        label="Margarita Name"
+        variant="outlined"
+        name="name"
+        size="small"
+        value={formData.name}
+        onChange={handleFormChange}
+        required={true}
+      />
+      <Ingredients
+        ingredients={formData.ingredients}
+        onIngredientsUpdated={onIngredientsUpdated}
+      />
 
-        <label>Directions</label>
-        <textarea
-          type="text"
-          name="directions"
-          aria-label="directions"
-          value={formData.directions}
-          onChange={handleFormChange}
-          required={true}
-        ></textarea>
+      <TextField
+        id="outlined-multiline-flexible"
+        label="Directions"
+        multiline
+        maxRows={8}
+        type="text"
+        name="directions"
+        aria-label="directions"
+        variant="outlined"
+        required={true}
+        value={formData.directions}
+        onChange={handleFormChange}
+      />
 
-        <label>Image URL </label>
-        <input
-          type="url"
-          name="image"
-          aria-label="image"
-          value={formData.image}
-          onChange={handleFormChange}
-          required={true}
-        ></input>
+      <TextField
+        id="outlined-basic"
+        label="Image URL"
+        variant="outlined"
+        required={true}
+        size="small"
+        type="url"
+        name="image"
+        aria-label="image"
+        value={formData.image}
+        onChange={handleFormChange}
+      />
 
-        <input type="submit" />
-      </form>
-      <Link to="/margaritas">HOME</Link>
-    </div>
+      <Toolbar disableGutters={true} sx={{ justifyContent: "flex-end" }}>
+        <Button variant="outlined" onClick={handleCancelClick}>
+          Cancel
+        </Button>
+
+        <StyledSubmitBtn type="submit" variant="contained">
+          Submit
+        </StyledSubmitBtn>
+      </Toolbar>
+    </StyledContainer>
   );
 }
 
 export default Form;
+
+const StyledContainer = styled(Container)({
+  display: "flex",
+  flexDirection: "column",
+  "& > *": {
+    marginBottom: "16px",
+  },
+});
+
+const StyledSubmitBtn = styled(Button)({
+  margin: "6px",
+  color: "white",
+});
