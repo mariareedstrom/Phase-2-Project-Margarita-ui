@@ -33,7 +33,6 @@ function MargaritaPage() {
   }
 
   function addToFavorites(margarita) {
-    // console.log(margarita);
     fetch(`http://localhost:3001/margaritas/${margarita.id}`, {
       method: "PATCH",
       headers: {
@@ -42,11 +41,16 @@ function MargaritaPage() {
       body: JSON.stringify({ ...margarita, favorite: true }),
     })
       .then((resp) => resp.json())
-      .then(() => history.push("/margaritas"));
+      .then((updated) => {
+        const updatedList = margaritas.map((item) =>
+          item.id === updated.id ? updated : item
+        );
+        setMargaritas(updatedList);
+        history.push("/margaritas");
+      });
   }
 
   function removeFromFavorites(margarita) {
-    console.log(margarita);
     fetch(`http://localhost:3001/margaritas/${margarita.id}`, {
       method: "PATCH",
       headers: {
@@ -55,17 +59,24 @@ function MargaritaPage() {
       body: JSON.stringify({ ...margarita, favorite: false }),
     })
       .then((resp) => resp.json())
-      .then(() => history.push("/margaritas"));
+      .then((updated) => {
+        const updatedList = margaritas.map((item) =>
+          item.id === updated.id ? updated : item
+        );
+        setMargaritas(updatedList);
+        history.push("/margaritas");
+      });
   }
 
-  // function deleteMargarita(margarita) {
-  //   console.log(margarita);
-  //   fetch(`http://localhost:3001/margaritas/${margarita.id}`, {
-  //     method: "DELETE",
-  //   })
-  //     .then((resp) => resp.json())
-  //     .then(console.log);
-  // }
+  function deleteMargarita(margarita) {
+    fetch(`http://localhost:3001/margaritas/${margarita.id}`, {
+      method: "DELETE",
+    }).then(() => {
+      const updatedList = margaritas.filter((item) => item.id !== margarita.id);
+      setMargaritas(updatedList);
+      history.push("/margaritas");
+    });
+  }
 
   return (
     <div>
@@ -78,6 +89,7 @@ function MargaritaPage() {
           <MargaritaDetails
             onAddToFavorites={addToFavorites}
             onRemoveFromFavorites={removeFromFavorites}
+            onDeleteMargarita={deleteMargarita}
           />
         </Route>
         <Route path="/margaritas">

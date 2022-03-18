@@ -4,8 +4,13 @@ import { styled } from "@mui/material";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
+import Toolbar from "@mui/material/Toolbar";
 
-function MargaritaDetails({ onAddToFavorites, onRemoveFromFavorites }) {
+function MargaritaDetails({
+  onAddToFavorites,
+  onRemoveFromFavorites,
+  onDeleteMargarita,
+}) {
   const [margarita, setMargarita] = useState(null);
   const [isLoaded, setIsLoaded] = useState(null);
 
@@ -33,6 +38,9 @@ function MargaritaDetails({ onAddToFavorites, onRemoveFromFavorites }) {
 
   function handleRemoveFromFavoritesClick(e) {
     onRemoveFromFavorites(margarita);
+  }
+  function handleDeleteMargarita(e) {
+    onDeleteMargarita(margarita);
   }
 
   function handleHomeClick() {
@@ -66,9 +74,22 @@ function MargaritaDetails({ onAddToFavorites, onRemoveFromFavorites }) {
 
       <p>{margarita.directions}</p>
 
-      <Button onClick={handleHomeClick} variant="outlined">
-        HOME
-      </Button>
+      <Toolbar disableGutters={true} sx={{ justifyContent: "flex-end" }}>
+        <Button
+          onClick={handleDeleteMargarita}
+          variant="outlined"
+          sx={{ marginRight: "8px" }}
+        >
+          Delete
+        </Button>
+        <Button
+          onClick={handleHomeClick}
+          variant="contained"
+          sx={{ color: "white" }}
+        >
+          Back
+        </Button>
+      </Toolbar>
     </Container>
   );
 }
