@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, useHistory, Link } from "react-router-dom";
-import styled from "styled-components";
+import { Switch, Route, useHistory } from "react-router-dom";
 import MargaritaList from "./MargaritaList";
 import Form from "./Form";
 
@@ -70,10 +69,6 @@ function MargaritaPage() {
 
   return (
     <div>
-      <div>
-        <Link to="/margaritas/new">Add A New Margarita</Link>
-      </div>
-
       <Switch>
         <Route path="/margaritas/new">
           <Form onSubmit={onSubmit} />

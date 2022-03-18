@@ -23,10 +23,7 @@ export default App;
 const theme = createTheme({
   palette: {
     primary: {
-      main: "#3F8AE0",
-    },
-    secondary: {
-      main: "#326eb3",
+      main: "#7cb342",
     },
   },
 });

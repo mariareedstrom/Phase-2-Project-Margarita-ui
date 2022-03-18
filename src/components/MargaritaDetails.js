@@ -1,12 +1,16 @@
 import React, { useState, useEffect } from "react";
-import { useParams, Link } from "react-router-dom";
-import styled from "styled-components";
+import { useParams, useHistory } from "react-router-dom";
+import { styled } from "@mui/material";
+import Container from "@mui/material/Container";
+import Button from "@mui/material/Button";
+import Box from "@mui/material/Box";
 
 function MargaritaDetails({ onAddToFavorites, onRemoveFromFavorites }) {
   const [margarita, setMargarita] = useState(null);
   const [isLoaded, setIsLoaded] = useState(null);
 
   const margaritaID = useParams().id;
+  const history = useHistory();
 
   useEffect(() => {
     fetch(`http://localhost:3001/margaritas/${margaritaID}`)
@@ -31,27 +35,47 @@ function MargaritaDetails({ onAddToFavorites, onRemoveFromFavorites }) {
     onRemoveFromFavorites(margarita);
   }
 
+  function handleHomeClick() {
+    history.push("/margaritas");
+  }
+
   return (
-    <div>
+    <Container maxWidth="sm">
       <h3>{margarita.name}</h3>
+
       {margarita.favorite === false ? (
-        <button onClick={handleAddToFavoritesClick}>❤️ Add To Favorites</button>
+        <Button onClick={handleAddToFavoritesClick}>❤️ Add To Favorites</Button>
       ) : (
-        <button onClick={handleRemoveFromFavoritesClick}>
+        <Button onClick={handleRemoveFromFavoritesClick}>
           🗑️ Remove From Favorites
-        </button>
+        </Button>
       )}
 
-      <img src={image} alt={margarita.name} />
+      <StyledBox
+        component="img"
+        display="flex"
+        border="2px"
+        src={image}
+        alt={margarita.name}
+      />
       <ul>
         {margarita.ingredients.map((ingredient) => (
           <li key={ingredient}>{ingredient}</li>
         ))}
       </ul>
+
       <p>{margarita.directions}</p>
-      <Link to="/margaritas">Home</Link>
-    </div>
+
+      <Button onClick={handleHomeClick} variant="outlined">
+        HOME
+      </Button>
+    </Container>
   );
 }
 
 export default MargaritaDetails;
+
+const StyledBox = styled(Box)({
+  height: 240,
+  width: 220,
+});

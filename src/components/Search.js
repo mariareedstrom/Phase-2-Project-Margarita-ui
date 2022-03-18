@@ -1,20 +1,50 @@
 import React from "react";
-import { styled, alpha } from "@mui/material/styles";
-
+import { styled } from "@mui/material/styles";
 import Toolbar from "@mui/material/Toolbar";
-import Typography from "@mui/material/Typography";
+import FormControlLabel from "@mui/material/FormControlLabel";
+import FormGroup from "@mui/material/FormGroup";
 import InputBase from "@mui/material/InputBase";
-
+import Switch from "@mui/material/Switch";
 import SearchIcon from "@mui/icons-material/Search";
+
+function SearchBar({ search, setSearch, checked, setChecked }) {
+  function handleCheckboxChange() {
+    setChecked(!checked);
+  }
+
+  return (
+    <Toolbar>
+      <Search>
+        <SearchIconWrapper>
+          <SearchIcon />
+        </SearchIconWrapper>
+        <StyledInputBase
+          placeholder="Search Margaritas…"
+          inputProps={{ "aria-label": "search" }}
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
+        />
+      </Search>
+
+      <FormGroup>
+        <FormControlLabel
+          control={<Switch checked={checked} onChange={handleCheckboxChange} />}
+          label="Favorites"
+        />
+      </FormGroup>
+    </Toolbar>
+  );
+}
+
+export default SearchBar;
 
 const Search = styled("div")(({ theme }) => ({
   position: "relative",
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: alpha(theme.palette.common.white, 0.15),
-  "&:hover": {
-    backgroundColor: alpha(theme.palette.common.white, 0.25),
-  },
+  border: "1px solid",
+  borderColor: theme.palette.primary.light,
   marginLeft: 0,
+  marginRight: theme.spacing(2),
   width: "100%",
   [theme.breakpoints.up("sm")]: {
     marginLeft: theme.spacing(1),
@@ -41,44 +71,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     transition: theme.transitions.create("width"),
     width: "100%",
     [theme.breakpoints.up("sm")]: {
-      width: "12ch",
-      "&:focus": {
-        width: "20ch",
-      },
+      width: "48ch",
     },
   },
 }));
-
-function SearchBar({ search, setSearch, checked, setChecked }) {
-  function handleCheckboxChange() {
-    setChecked(!checked);
-  }
-
-  return (
-    <Toolbar>
-      <Search>
-        <SearchIconWrapper>
-          <SearchIcon />
-        </SearchIconWrapper>
-        <StyledInputBase
-          placeholder="Search Margaritas…"
-          inputProps={{ "aria-label": "search" }}
-          value={search}
-          onChange={(e) => setSearch(e.target.value)}
-        />
-      </Search>
-      <div>
-        <label>
-          <input
-            type="checkbox"
-            checked={checked}
-            onChange={handleCheckboxChange}
-          />
-          View Favorites🍸
-        </label>
-      </div>
-    </Toolbar>
-  );
-}
-
-export default SearchBar;
