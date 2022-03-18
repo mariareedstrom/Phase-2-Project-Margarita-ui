@@ -64,6 +64,7 @@ function Form({ onSubmit }) {
       </Typography>
 
       <TextField
+        required
         id="outlined-basic"
         label="Margarita Name"
         variant="outlined"
@@ -71,7 +72,6 @@ function Form({ onSubmit }) {
         size="small"
         value={formData.name}
         onChange={handleFormChange}
-        required={true}
       />
       <Ingredients
         ingredients={formData.ingredients}
@@ -79,6 +79,7 @@ function Form({ onSubmit }) {
       />
 
       <TextField
+        required
         id="outlined-multiline-flexible"
         label="Directions"
         multiline
@@ -87,16 +88,15 @@ function Form({ onSubmit }) {
         name="directions"
         aria-label="directions"
         variant="outlined"
-        required={true}
         value={formData.directions}
         onChange={handleFormChange}
       />
 
       <TextField
+        required
         id="outlined-basic"
         label="Image URL"
         variant="outlined"
-        required={true}
         size="small"
         type="url"
         name="image"
@@ -106,13 +106,17 @@ function Form({ onSubmit }) {
       />
 
       <Toolbar disableGutters={true} sx={{ justifyContent: "flex-end" }}>
-        <Button variant="outlined" onClick={handleCancelClick}>
+        <Button
+          variant="outlined"
+          sx={{ marginRight: "8px" }}
+          onClick={handleCancelClick}
+        >
           Cancel
         </Button>
 
-        <StyledSubmitBtn type="submit" variant="contained">
+        <Button type="submit" sx={{ color: "white" }} variant="contained">
           Submit
-        </StyledSubmitBtn>
+        </Button>
       </Toolbar>
     </StyledContainer>
   );
@@ -126,9 +130,4 @@ const StyledContainer = styled(Container)({
   "& > *": {
     marginBottom: "16px",
   },
-});
-
-const StyledSubmitBtn = styled(Button)({
-  margin: "6px",
-  color: "white",
 });
