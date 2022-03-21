@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Switch, Route, useHistory } from "react-router-dom";
+import { Switch, Route, Redirect, useHistory } from "react-router-dom";
 import MargaritaList from "./MargaritaList";
 import Form from "./Form";
 import MargaritaDetails from "./MargaritaDetails";
@@ -98,7 +98,7 @@ function MargaritaPage() {
         </Route>
 
         <Route>
-          <h1>404 Sorry, this page does not exist.</h1>
+          <Redirect to="/margaritas" />
         </Route>
       </Switch>
     </div>
