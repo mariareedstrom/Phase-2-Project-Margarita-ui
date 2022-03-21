@@ -26,7 +26,7 @@ function MargaritaDetails({
         setMargarita(data);
         setIsLoaded(true);
       });
-  }, []);
+  }, [margaritaID]);
 
   if (!isLoaded) return <h3>Good times coming right up....</h3>;
 
