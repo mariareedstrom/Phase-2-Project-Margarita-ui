@@ -2,7 +2,14 @@
 
 An interactive application that allows the user to view and manage margarita recipies.
 
-GIF
+Search, View, Add to Favorites
+![Clip 1](/docs/images/clip%201.gif)
+
+Create a New Margarita
+![Clip 2](/docs/images/clip%202.gif)
+
+Delete a Margarita
+![Clip 3](/docs/images/clip%203.gif)
 
 # Overview
 
