@@ -9,7 +9,10 @@ function Header() {
       <Toolbar>
         <Logo>
           <Link to="/margaritas">
-            <img src="/logo.png" style={{ height: "100%" }}></img>
+            <img src="/logo.png" style={{ height: "100%" }}>
+              {" "}
+              alt="margarita-logo"{" "}
+            </img>
           </Link>
         </Logo>
         <div>
