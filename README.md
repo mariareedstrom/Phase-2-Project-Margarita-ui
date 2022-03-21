@@ -33,7 +33,10 @@ Using react router, there is one initial load before our application can move ef
 For the backend for this project I used json-server. On page load, a fetch request is made to retreive all margaritas. Further more, POST, PATCH, and DELETE requests are made to add new, set to favorites, and remove margaritas.
 
 The backend of this project was deployed using Heroku.
+[Check it out here](https://margarita-mania.herokuapp.com/margaritas)
+
 The front end using Netlify.
+[Check it out here](https://nifty-euler-6e0775.netlify.app/margaritas)
 
 ## Features
 
