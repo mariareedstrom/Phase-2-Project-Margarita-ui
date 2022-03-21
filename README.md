@@ -57,10 +57,10 @@ From the home page, click "Add New Margarita" to navigate to the form to enter a
 
 ## Attribution
 
-create-react-app
+[create-react-app](https://create-react-app.dev/)
 
-react router
+[react router](https://reactrouter.com/)
 
-heroku
+[Heroku](https://heroku.com/)
 
-netlify
+[Netlify](https://netlify.com/)
