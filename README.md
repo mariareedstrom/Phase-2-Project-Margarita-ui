@@ -2,6 +2,8 @@
 
 An interactive application that allows the user to view and manage margarita recipies.
 
+There are so many different types of margaritas to enjoy, so many in fact, that it has become hard to keep track. Not to worry amigos, with this React application there is a simple way to manage all your margaritas in one place.
+
 ## Search, View, Add to Favorites
 
 ![Clip 1](/docs/images/clip%201.gif)
@@ -13,10 +15,6 @@ An interactive application that allows the user to view and manage margarita rec
 ## Delete a Margarita
 
 ![Clip 3](/docs/images/clip%203.gif)
-
-# Overview
-
-There are so many different types of margaritas to enjoy, so many in fact, that it has become hard to keep track. Not to worry amigos, with this React application there is a simple way to manage all your margaritas in one place.
 
 ## A Single Page Application created with create-react-app
 
