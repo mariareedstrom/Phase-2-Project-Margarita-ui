@@ -5,13 +5,15 @@ import Form from "./Form";
 
 import MargaritaDetails from "./MargaritaDetails";
 
+const SERVER_API = process.env.REACT_APP_SERVER_API;
+
 function MargaritaPage() {
   const [margaritas, setMargaritas] = useState([]);
 
   const history = useHistory();
 
   useEffect(() => {
-    fetch("http://localhost:3001/margaritas")
+    fetch(`${SERVER_API}/margaritas`)
       .then((resp) => resp.json())
       .then((data) => {
         setMargaritas(data);
@@ -19,7 +21,7 @@ function MargaritaPage() {
   }, []);
 
   function onSubmit(margaritaObj) {
-    return fetch("http://localhost:3001/margaritas", {
+    return fetch(`${SERVER_API}/margaritas`, {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -33,7 +35,7 @@ function MargaritaPage() {
   }
 
   function addToFavorites(margarita) {
-    fetch(`http://localhost:3001/margaritas/${margarita.id}`, {
+    fetch(`${SERVER_API}/margaritas/${margarita.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -51,7 +53,7 @@ function MargaritaPage() {
   }
 
   function removeFromFavorites(margarita) {
-    fetch(`http://localhost:3001/margaritas/${margarita.id}`, {
+    fetch(`${SERVER_API}/margaritas/${margarita.id}`, {
       method: "PATCH",
       headers: {
         "Content-Type": "application/json",
@@ -69,7 +71,7 @@ function MargaritaPage() {
   }
 
   function deleteMargarita(margarita) {
-    fetch(`http://localhost:3001/margaritas/${margarita.id}`, {
+    fetch(`${SERVER_API}/margaritas/${margarita.id}`, {
       method: "DELETE",
     }).then(() => {
       const updatedList = margaritas.filter((item) => item.id !== margarita.id);

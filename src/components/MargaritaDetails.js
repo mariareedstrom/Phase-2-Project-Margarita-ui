@@ -6,6 +6,8 @@ import Button from "@mui/material/Button";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
 
+const SERVER_API = process.env.REACT_APP_SERVER_API;
+
 function MargaritaDetails({
   onAddToFavorites,
   onRemoveFromFavorites,
@@ -18,7 +20,7 @@ function MargaritaDetails({
   const history = useHistory();
 
   useEffect(() => {
-    fetch(`http://localhost:3001/margaritas/${margaritaID}`)
+    fetch(`${SERVER_API}/margaritas/${margaritaID}`)
       .then((resp) => resp.json())
       .then((data) => {
         setMargarita(data);
