@@ -22,7 +22,7 @@ Using react router, there is one initial load before our application can move ef
 
 ## API & Deployment
 
-The backend for this project I used json-server. On page load, a fetch request is made to retreive all margaritas. Further more, POST, PATCH, and DELETE requests pare made to add new, set to favorites, and remove margaritas.
+For the backend for this project I used json-server. On page load, a fetch request is made to retreive all margaritas. Further more, POST, PATCH, and DELETE requests are made to add new, set to favorites, and remove margaritas.
 
 The backend of this project was deployed using Heroku.
 The front end using Netlify.
