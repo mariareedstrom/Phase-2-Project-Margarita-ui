@@ -17,7 +17,7 @@ function Header() {
           </Link>
         </Logo>
         <div>
-          <StyledHeader variant="h2" component="h1" sx={{ flexGrow: 1 }}>
+          <StyledHeader variant="h2" component="h1">
             Margarita Mania
           </StyledHeader>
           <Typography variant="subtitle1" component="span">
@@ -38,12 +38,13 @@ const StyledHeader = styled(Typography)(({ theme }) => ({
     1px -1px 0 #000,
     -1px 1px 0 #000,
      1px 1px 0 #000`,
+  flexGrow: 1,
 }));
 
-const Logo = styled("div")(({ theme }) => ({
+const Logo = styled("div")({
   height: "64px",
   marginRight: "16px",
-}));
+});
 
 const StyledAppBar = styled(AppBar)({
   bgcolor: "primary.light",

@@ -19,9 +19,7 @@ function Form({ onSubmit }) {
   const history = useHistory();
 
   function handleFormChange(e) {
-    // console.log(e.target.value);
     setFormData({ ...formData, [e.target.name]: e.target.value });
-    // console.log(formData);
   }
 
   function handleSubmit(e) {
@@ -43,9 +41,7 @@ function Form({ onSubmit }) {
 
   function onIngredientsUpdated(ingredients) {
     setFormData({ ...formData, ingredients });
-    // console.log(formData);
   }
-  // console.log(formData.ingredients);
 
   function handleCancelClick() {
     history.push("/margaritas");
