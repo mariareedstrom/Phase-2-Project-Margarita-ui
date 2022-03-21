@@ -1,70 +1,58 @@
-# Getting Started with Create React App
+# Margarita Mania
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+An interactive application that allows the user to view and manage margarita recipies.
 
-## Available Scripts
+GIF
 
-In the project directory, you can run:
+# Overview
 
-### `npm start`
+There are so many different types of margaritas to enjoy, so many in fact, that it has become hard to keep track. Not to worry amigos, with this React application there is a simple way to manage all your margaritas in one place.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+## A Single Page Application created with create-react-app
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+Margarita Mania is a React single page application (SPA) that was created using create-react-app.
 
-### `npm test`
+It provides the user with a collection of different margarita recipes, allows them to navigate between pages, save favorites as well as add and remove recipies from the collection.
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Client sided routing with react router
 
-### `npm run build`
+Thanks to dynamic component rendering and client-sided routing using React Router, this application both looks and feels like multiple pages.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+Using react router, there is one initial load before our application can move effortlessly between "pages" without that pesky split second of a page refresh. Allowing us to navigate between different components keeping the UI in sync with the browser URL.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## API & Deployment
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+The backend for this project I used json-server. On page load, a fetch request is made to retreive all margaritas. Further more, POST, PATCH, and DELETE requests pare made to add new, set to favorites, and remove margaritas.
 
-### `npm run eject`
+The backend of this project was deployed using Heroku.
+The front end using Netlify.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Features
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+User can view a collection of all margaritas
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+User can search for margaritas
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+User can add new margaritas or delete existing ones
 
-## Learn More
+User can save margaritas to favorites
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+User can view favorite margaritas
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+## How To Use
 
-### Code Splitting
+Search for margaritas by name using the proivided search bar. Toggle between viewing the complete collection and favorites by checking "Favorites".
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+Each margarita card can be selected to view details either by clicking "recipie", or by entering the margarita id in the URL. From the details page there is an option to add or remove from favorites as desired. If it is really not your taste, hit "delete" to delete from collection entirely.
 
-### Analyzing the Bundle Size
+From the home page, click "Add New Margarita" to navigate to the form to enter a brand new recipie.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+## Attribution
 
-### Making a Progressive Web App
+create-react-app
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
+react router
 
-### Advanced Configuration
+heroku
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+netlify
